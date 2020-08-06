@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom'
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
 import Header from '../Header/Header'
+import Footer from '../Footer/Footer'
 import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
@@ -28,6 +29,7 @@ class App extends Component {
   }
 
   render () {
+    console.log('state is:', this.state)
     const { msgAlerts, user } = this.state
 
     return (
@@ -55,6 +57,7 @@ class App extends Component {
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
+        < Footer />
       </Fragment>
     )
   }

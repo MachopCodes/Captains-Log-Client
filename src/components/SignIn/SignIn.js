@@ -24,7 +24,6 @@ class SignIn extends Component {
   onSignIn = event => {
     event.preventDefault()
 
-    console.log('sign in props', this.props)
     const { msgAlert, history, setUser } = this.props
 
     signIn(this.state)
@@ -69,9 +68,9 @@ class SignIn extends Component {
               <Form.Label>Password</Form.Label>
               <Form.Control
                 required
+                type="password"
                 name="password"
                 value={password}
-                type="password"
                 placeholder="Password"
                 onChange={this.handleChange}
               />

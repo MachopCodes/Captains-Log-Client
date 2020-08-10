@@ -12,9 +12,9 @@ class TripUpdate extends Component {
     console.log('props inside update are:', props)
 
     this.state = {
-      location: this.props.trip.location,
-      tripStart: this.props.trip.tripStart,
-      tripEnd: this.props.trip.tripEnd,
+      longitude: this.props.trip.longitude,
+      launchDate: this.props.trip.launchDate,
+      latitude: this.props.trip.latitude,
       edited: false
     }
   }
@@ -46,41 +46,40 @@ class TripUpdate extends Component {
 
   render () {
     console.log('the state in update render is: ', this.state)
-    const { location, tripStart, tripEnd } = this.state
+    const { longitude, launchDate, latitude } = this.state
     return (
       <div>
-        <h3>Edit this trip piece</h3>
         <Form onSubmit={this.onTripUpdate}>
-          <Form.Group controlId="location">
-            <Form.Label>Location</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              name="location"
-              value={location}
-              placeholder="location"
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group controlId="tripStart">
-            <Form.Label>Trip Start</Form.Label>
+          <Form.Group controlId="launchDate">
+            <Form.Label>Launch Date</Form.Label>
             <Form.Control
               required
               type="text"
               name="trip start"
-              value={tripStart}
-              placeholder="trip start"
+              value={launchDate}
+              placeholder="Launch Date"
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Form.Group controlId="tripEnd">
-            <Form.Label>Trip End</Form.Label>
+          <Form.Group controlId="latitude">
+            <Form.Label>Latitude</Form.Label>
             <Form.Control
               required
               type="text"
               name="trip start"
-              value={tripEnd}
-              placeholder="tripEnd"
+              value={latitude}
+              placeholder="latitude"
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="longitude">
+            <Form.Label>longitude</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              name="longitude"
+              value={longitude}
+              placeholder="longitude"
               onChange={this.handleChange}
             />
           </Form.Group>

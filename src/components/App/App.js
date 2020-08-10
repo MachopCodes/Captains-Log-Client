@@ -12,6 +12,7 @@ import Home from '../Home/Home'
 import TripCreate from '../CreateTrip/CreateTrip'
 import TripIndex from '../IndexTrip/IndexTrip'
 import TripShow from '../ShowTrip/ShowTrip'
+import GetTide from '../GetTide/GetTide'
 import ChangePassword from '../ChangePassword/ChangePassword'
 
 class App extends Component {
@@ -72,6 +73,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/trips/:id' render={(props) => (
             <TripShow {...props} setTrip={this.setTrip} user={user} msgAlert={this.msgAlert} />
           )} />
+          <Route path='/tides' render={() => (<GetTide />)} />
         </main>
         < Footer />
       </Fragment>

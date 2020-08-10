@@ -52,7 +52,7 @@ class TripIndex extends React.Component {
             return (
               <ListGroup.Item key={trip.id}>
                 <Link to={`/trips/${trip.id}`}>
-                  {trip.location}
+                  Trip {trip.id} on {trip.launchDate.substring(5, 10)} at coordinates: {trip.longitude}, {trip.latitude}
                 </Link>
               </ListGroup.Item>
             )

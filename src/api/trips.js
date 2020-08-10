@@ -2,6 +2,7 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 export const createTrip = (data, user) => {
+  console.log('data inside of axios call is:', data)
   return axios({
     method: 'POST',
     url: apiUrl + '/trips/',

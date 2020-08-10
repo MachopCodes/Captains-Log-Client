@@ -4,6 +4,7 @@ import messages from '../AutoDismissAlert/messages'
 
 import TripDelete from '../DeleteTrip/DeleteTrip'
 import TripUpdate from '../UpdateTrip/UpdateTrip'
+import GetTide from '../GetTide/GetTide'
 
 class TripShow extends React.Component {
   constructor (props) {
@@ -33,19 +34,20 @@ class TripShow extends React.Component {
   }
 
   render () {
-    this.state.trip && console.log('state.trip.tripstart is: ', this.state.trip.tripStart)
+    this.state.trip && console.log('state.trip.launchDate is: ', this.state.trip.launchDate)
     let jsx
     if (this.state.notFound) {
       jsx = <p>Cannot connect to server.</p>
     } else if (this.state.trip === null) {
       jsx = <p>Loading... </p>
     } else {
-      const { tripStart, tripEnd, location, owner } = this.state.trip
+      const { launchDate, latitude, longitude } = this.state.trip
       jsx = (
         <div>
           <p>
-            owner number {owner} is going to {location} from {tripStart} to {tripEnd}
+            Launch Date {launchDate} at longitude {longitude}, latitude {latitude}
           </p>
+          <GetTide trip={this.state.trip} msgAlert={this.props.msgAlert} />
           <TripUpdate trip={this.state.trip} user={this.props.user} msgAlert={this.props.msgAlert} />
           <TripDelete msgAlert={this.props.msgAlert} user={this.props.user} />
         </div>
@@ -53,7 +55,7 @@ class TripShow extends React.Component {
     }
     return (
       <div>
-        <h3>Trip</h3>
+        <h3>Trip Information</h3>
         {jsx}
       </div>
     )

@@ -8,9 +8,9 @@ class TripCreate extends React.Component {
     super(props)
 
     this.state = {
-      tripStart: '',
-      tripEnd: '',
-      location: ''
+      launchDate: '',
+      latitude: '',
+      longitude: ''
     }
   }
 
@@ -34,9 +34,9 @@ class TripCreate extends React.Component {
       })
       .catch(error => {
         this.setState({
-          tripStart: '',
-          tripEnd: '',
-          location: ''
+          launchDate: '',
+          latitude: '',
+          longitude: ''
         })
         console.log(error)
         msgAlert({
@@ -47,7 +47,7 @@ class TripCreate extends React.Component {
       })
   }
   render () {
-    const { tripStart, tripEnd, location } = this.state
+    const { launchDate, latitude, longitude } = this.state
 
     return (
       <div className="row">
@@ -59,30 +59,30 @@ class TripCreate extends React.Component {
               <Form.Control
                 required
                 type="date"
-                name="tripStart"
-                value={tripStart}
+                name="launchDate"
+                value={launchDate}
                 placeholder="Enter trip start date"
                 onChange={this.handleChange}
               />
             </Form.Group>
             <Form.Group controlId="trip end">
-              <Form.Label>End Date</Form.Label>
+              <Form.Label>Latitude</Form.Label>
               <Form.Control
                 required
-                type="date"
-                name="tripEnd"
-                value={tripEnd}
+                type="text"
+                name="latitude"
+                value={latitude}
                 placeholder="Enter trip end date"
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <Form.Group controlId="location">
-              <Form.Label>Location</Form.Label>
+            <Form.Group controlId="longitude">
+              <Form.Label>longitude</Form.Label>
               <Form.Control
                 required
                 type="text"
-                name="location"
-                value={location}
+                name="longitude"
+                value={longitude}
                 placeholder="Enter destination"
                 onChange={this.handleChange}
               />

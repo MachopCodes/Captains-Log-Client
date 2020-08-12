@@ -1,6 +1,6 @@
 {
   "name": "nautical-trip-planner",
-  "homepage": "https://machopcodes.github.io/Tide_Planner/",
+  "homepage": "https://machopcodes.github.io/tide_planner/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

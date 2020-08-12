@@ -1,7 +1,8 @@
 import axios from 'axios'
 import apiUrl from '../apiConfig'
+const key = '0dc5cbc839msh38f20cf1d6694f0p196821jsn4cc0c344b85b'
 
-export const getTide = (props, key) => {
+export const getTide = (props) => {
   const time = Math.floor((new Date(props.launchDate)).getTime() / 1000)
   return axios({
     method: 'GET',

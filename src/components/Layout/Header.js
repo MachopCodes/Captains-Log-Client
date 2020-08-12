@@ -8,7 +8,6 @@ const authenticatedOptions = (
     <Nav.Link href="#trips">View Trips</Nav.Link>
     <Nav.Link href="#change-password">Change Password</Nav.Link>
     <Nav.Link href="#sign-out">Sign Out</Nav.Link>
-    <Nav.Link href="#coords">Get Coords</Nav.Link>
   </Fragment>
 )
 

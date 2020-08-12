@@ -1,7 +1,7 @@
 import React from 'react'
 import { indexTrips } from '../../api/trips'
 import messages from '../AutoDismissAlert/messages'
-import { ListGroup } from 'react-bootstrap'
+import { ListGroup, Image, Badge } from 'react-bootstrap'
 import { Link, withRouter } from 'react-router-dom'
 
 class TripIndex extends React.Component {
@@ -44,16 +44,30 @@ class TripIndex extends React.Component {
     } else if (this.state.trips === null) {
       jsx = <p>Loading... </p>
     } else if (this.state.trips.length === 0) {
-      jsx = <p>No trips</p>
+      jsx = (
+        <div>
+          <h1 className="main" style={{ textAlign: 'center' }} >None Yet!</h1>
+          <Image src="https://www.thoughtco.com/thmb/wM4gvZhIhhUjzWputSnBZFgnuAA=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-642334164-5b61ebb946e0fb0025dac934.jpg" />
+        </div>
+      )
     } else {
       jsx = (
         <ListGroup>
           {this.state.trips.map(trip => {
             return (
               <ListGroup.Item key={trip.id}>
+                <h3>
+                  <Badge variant="success">Launch Date:</Badge>
+                  <Badge variant="danger">{trip.launchDate.substring(5, 10)}</Badge>
+                </h3>
                 <Link to={`/trips/${trip.id}`}>
-                  Trip {trip.id} on {trip.launchDate.substring(5, 10)} at coordinates: {trip.longitude}, {trip.latitude}
+                  <h5>{trip.city}, {trip.state}</h5>
                 </Link>
+                <h6>
+                  Coordinates:
+                  <Badge variant="secondary"> {trip.longitude} </Badge>
+                  <Badge variant="secondary"> {trip.latitude} </Badge>
+                </h6>
               </ListGroup.Item>
             )
           })}
@@ -62,7 +76,7 @@ class TripIndex extends React.Component {
     }
     return (
       <div>
-        <h3 className="main">Trips</h3>
+        <br></br>
         {jsx}
       </div>
     )

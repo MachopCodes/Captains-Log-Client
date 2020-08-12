@@ -3,7 +3,6 @@ import { showTrip } from '../../api/trips'
 import messages from '../AutoDismissAlert/messages'
 import { Container, Row, Col } from 'react-bootstrap'
 
-import TripDelete from './DeleteTrip'
 import TripUpdate from './UpdateTrip'
 import GetTide from '../Tide/GetTide'
 
@@ -44,15 +43,11 @@ class TripShow extends React.Component {
         <div>
           <Container fluid>
             <Row>
-              <h3 className="main">Trip Information</h3>
-            </Row>
-            <Row>
-              <h5 className="main">Launch Date {this.state.trip.launchDate}</h5>
+              <h5 className="main">Launch Date {this.state.trip.launchDate} at Coordinates {this.state.trip.latitude}, {this.state.trip.longitude}</h5>
             </Row>
             <Row>
               <Col md="auto">
                 <TripUpdate trip={this.state.trip} user={this.props.user} msgAlert={this.props.msgAlert} />
-                <TripDelete msgAlert={this.props.msgAlert} user={this.props.user} />
               </Col>
               <Col sm={3}>
                 <GetTide user={this.props.user} trip={this.state.trip} msgAlert={this.props.msgAlert} />
@@ -62,7 +57,12 @@ class TripShow extends React.Component {
         </div>
       )
     }
-    return (<div>{jsx}</div>)
+    return (
+      <div>
+        <br></br>
+        {jsx}
+      </div>
+    )
   }
 }
 

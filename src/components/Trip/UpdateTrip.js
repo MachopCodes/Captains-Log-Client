@@ -5,6 +5,7 @@ import { getCoords } from '../../api/tides'
 import { updateTrip } from '../../api/trips'
 import messages from '../AutoDismissAlert/messages'
 import { Form, Button } from 'react-bootstrap'
+import TripDelete from './DeleteTrip'
 
 class TripUpdate extends Component {
   constructor (props) {
@@ -84,13 +85,13 @@ class TripUpdate extends Component {
             />
           </Form.Group>
           <Button
-            variant="dark"
+            variant="success"
             type="submit"
-            size="sm"
           >
             Update
           </Button>
         </Form>
+        <TripDelete msgAlert={this.props.msgAlert} user={this.props.user} />
       </div>
     )
   }

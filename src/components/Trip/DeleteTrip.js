@@ -19,9 +19,8 @@ class TripDelete extends Component {
       .then(() => {
         this.setState({ destroyed: true })
         msgAlert({
-          heading: 'Delete Success',
-          message: messages.tripDeleteSuccess,
-          variant: 'success'
+          heading: 'Trip Deleted',
+          variant: 'danger'
         })
         history.push('/')
       })

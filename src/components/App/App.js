@@ -13,7 +13,6 @@ import ChangePassword from '../Auth/ChangePassword'
 import TripCreate from '../Trip/CreateTrip'
 import TripIndex from '../Trip/IndexTrip'
 import TripShow from '../Trip/ShowTrip'
-import GetCoords from '../Tide/GetCoords'
 
 class App extends Component {
   constructor () {
@@ -74,7 +73,6 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/trips/:id' render={(props) => (
             <TripShow {...props} setTrip={this.setTrip} user={user} msgAlert={this.msgAlert} />
           )} />
-          <Route path='/coords' render={() => (<GetCoords user={user} />)} />
         </main>
         < Footer />
       </Fragment>

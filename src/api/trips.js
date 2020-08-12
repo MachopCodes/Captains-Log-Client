@@ -1,7 +1,7 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const createTrip = (state, user, tides) => {
+export const createTrip = (res, state, user) => {
   return axios({
     method: 'POST',
     url: apiUrl + '/trips/',
@@ -11,10 +11,10 @@ export const createTrip = (state, user, tides) => {
     data: {
       trip: {
         launchDate: state.launchDate,
-        latitude: tides.latitude,
-        longitude: tides.longitude,
-        city: state.city,
-        state: state.state
+        latitude: res.lat,
+        longitude: res.lng,
+        city: res.city,
+        state: res.state
       }
     }
   })

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { createTrip } from '../../api/trips'
-import { getTide, getCoords } from '../../api/tides'
+import { getCoords } from '../../api/tides'
 // import { createTide } from '../../api/tides'
 import messages from '../AutoDismissAlert/messages'
 
@@ -28,10 +28,10 @@ class TripCreate extends React.Component {
     const { msgAlert, user, history } = this.props
     const id = this.state.city + this.state.state
     getCoords(id, user)
-      .then(res => getTide(res.data.lat, res.data.lng, this.state.launchDate))
+      // .then(res => getTide(res.data.lat, res.data.lng, this.state.launchDate))
       .then(res => {
-        this.setState({ tides: res.data })
-        createTrip(this.state, user, res.data)
+        // this.setState({ tides: res.data })
+        createTrip(res.data, this.state, user)
         // .then(res => {
         //   const tideCaller = []
         //   tideCaller.push(res.data.id, this.state.tides)
@@ -55,7 +55,7 @@ class TripCreate extends React.Component {
           tides: []
         })
         msgAlert({
-          heading: 'Trip Create Failed with error: ' + error.message,
+          heading: 'Invalid City or State!: ' + error.message,
           message: messages.tripCreateFailure,
           variant: 'danger'
         })
@@ -92,7 +92,7 @@ class TripCreate extends React.Component {
               />
             </Form.Group>
             <Form.Group controlId="longitude">
-              <Form.Label className="main">state</Form.Label>
+              <Form.Label className="main">State</Form.Label>
               <Form.Control
                 required
                 type="text"

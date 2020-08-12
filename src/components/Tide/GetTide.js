@@ -18,7 +18,7 @@ class GetTide extends React.Component {
     event.preventDefault()
     getKey(this.props.user)
       .then((res) => {
-        getTide(this.props.trip, res)
+        getTide(this.props.trip)
           .then((res) => this.setState({ tides: res.data.extremes }))
           .catch((error) => console.log(error))
       })
@@ -29,10 +29,10 @@ class GetTide extends React.Component {
       jsx =
       <div>
         <Button onClick={this.onGetTide}
-          variant="primary"
+          variant="info"
           type="submit"
         >
-        Get Tide
+        Tides
         </Button>
       </div>
     } else {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
+import { getCoords } from '../../api/tides'
 import { updateTrip } from '../../api/trips'
 import messages from '../AutoDismissAlert/messages'
 import { Form, Button } from 'react-bootstrap'
@@ -9,12 +10,10 @@ class TripUpdate extends Component {
   constructor (props) {
     super(props)
 
-    console.log('props inside update are:', props)
-
     this.state = {
-      longitude: this.props.trip.longitude,
       launchDate: this.props.trip.launchDate,
-      latitude: this.props.trip.latitude,
+      city: this.props.trip.city,
+      state: this.props.trip.state,
       edited: false
     }
   }
@@ -26,7 +25,9 @@ class TripUpdate extends Component {
   onTripUpdate = event => {
     event.preventDefault()
     const { user, msgAlert, history, match } = this.props
-    updateTrip(this.state, match.params.id, user)
+    const id = this.state.city + this.state.state
+    getCoords(id, user)
+      .then(res => updateTrip(this.state, res.data, match.params.id, user))
       .then(() => {
         msgAlert({
           heading: 'Edit Success',
@@ -45,13 +46,12 @@ class TripUpdate extends Component {
   }
 
   render () {
-    console.log('the state in update render is: ', this.state)
-    const { longitude, launchDate, latitude } = this.state
+    const { launchDate, city, state } = this.state
     return (
       <div>
         <Form onSubmit={this.onTripUpdate}>
           <Form.Group controlId="launchDate">
-            <Form.Label>Launch Date</Form.Label>
+            <Form.Label className="main">Launch Date</Form.Label>
             <Form.Control
               required
               type="text"
@@ -61,25 +61,25 @@ class TripUpdate extends Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Form.Group controlId="latitude">
-            <Form.Label>Latitude</Form.Label>
+          <Form.Group controlId="city">
+            <Form.Label className="main">City</Form.Label>
             <Form.Control
               required
               type="text"
-              name="trip start"
-              value={latitude}
-              placeholder="latitude"
+              name="city"
+              value={city}
+              placeholder="enter city"
               onChange={this.handleChange}
             />
           </Form.Group>
           <Form.Group controlId="longitude">
-            <Form.Label>longitude</Form.Label>
+            <Form.Label className="main">State</Form.Label>
             <Form.Control
               required
               type="text"
-              name="longitude"
-              value={longitude}
-              placeholder="longitude"
+              name="state"
+              value={state}
+              placeholder="enter state (no abbreviations!)"
               onChange={this.handleChange}
             />
           </Form.Group>
@@ -88,7 +88,7 @@ class TripUpdate extends Component {
             type="submit"
             size="sm"
           >
-            Edit Trip
+            Update
           </Button>
         </Form>
       </div>

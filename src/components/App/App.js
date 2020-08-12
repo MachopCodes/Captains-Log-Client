@@ -3,17 +3,17 @@ import { Route } from 'react-router-dom'
 
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
-import Header from '../Header/Header'
-import Footer from '../Footer/Footer'
-import SignUp from '../SignUp/SignUp'
-import SignIn from '../SignIn/SignIn'
-import SignOut from '../SignOut/SignOut'
-import Home from '../Home/Home'
-import TripCreate from '../CreateTrip/CreateTrip'
-import TripIndex from '../IndexTrip/IndexTrip'
-import TripShow from '../ShowTrip/ShowTrip'
-import GetTide from '../GetTide/GetTide'
-import ChangePassword from '../ChangePassword/ChangePassword'
+import Home from '../Layout/Home'
+import Header from '../Layout/Header'
+import Footer from '../Layout/Footer'
+import SignUp from '../Auth/SignUp'
+import SignIn from '../Auth/SignIn'
+import SignOut from '../Auth/SignOut'
+import ChangePassword from '../Auth/ChangePassword'
+import TripCreate from '../Trip/CreateTrip'
+import TripIndex from '../Trip/IndexTrip'
+import TripShow from '../Trip/ShowTrip'
+import GetCoords from '../Tide/GetCoords'
 
 class App extends Component {
   constructor () {
@@ -21,7 +21,9 @@ class App extends Component {
 
     this.state = {
       user: null,
-      msgAlerts: []
+      msgAlerts: [],
+      trip: null,
+      tides: []
     }
   }
 
@@ -29,14 +31,13 @@ class App extends Component {
   clearUser = () => this.setState({ user: null })
 
   setTrip = trip => this.setState({ trip })
-  clearArt = () => this.setState({ trip: null })
+  clearTrip = () => this.setState({ trip: null })
 
   msgAlert = ({ heading, message, variant }) => {
     this.setState({ msgAlerts: [...this.state.msgAlerts, { heading, message, variant }] })
   }
 
   render () {
-    console.log('state is:', this.state)
     const { msgAlerts, user } = this.state
 
     return (
@@ -73,7 +74,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/trips/:id' render={(props) => (
             <TripShow {...props} setTrip={this.setTrip} user={user} msgAlert={this.msgAlert} />
           )} />
-          <Route path='/tides' render={() => (<GetTide />)} />
+          <Route path='/coords' render={() => (<GetCoords user={user} />)} />
         </main>
         < Footer />
       </Fragment>

@@ -62,7 +62,7 @@ class TripIndex extends React.Component {
     }
     return (
       <div>
-        <h3>Trips</h3>
+        <h3 className="main">Trips</h3>
         {jsx}
       </div>
     )

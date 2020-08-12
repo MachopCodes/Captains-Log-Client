@@ -15,7 +15,6 @@ class TripDelete extends Component {
   onDelete = event => {
     event.preventDefault()
     const { user, history, msgAlert, match } = this.props
-    console.log('props are: ', this.props)
     deleteTrip(match.params.id, user)
       .then(() => {
         this.setState({ destroyed: true })

@@ -1,9 +1,9 @@
 import axios from 'axios'
-const key = '0dc5cbc839msh38f20cf1d6694f0p196821jsn4cc0c344b85b'
+import apiUrl from '../apiConfig'
 
-export const getTide = () => {
-  console.log('inside the axios')
-  axios({
+export const getTide = (props, key) => {
+  const time = Math.floor((new Date(props.launchDate)).getTime() / 1000)
+  return axios({
     method: 'GET',
     url: 'https://tides.p.rapidapi.com/tides',
     headers: {
@@ -14,10 +14,41 @@ export const getTide = () => {
     },
     params: {
       interval: '60',
-      timestamp: '1628467200',
+      timestamp: time,
       duration: '1440',
-      latitude: '41.0772',
-      longitude: '73.4687'
+      latitude: props.latitude,
+      longitude: props.longitude
+    }
+  })
+}
+
+export const createTide = (data, user) => {
+  return axios({
+    method: 'POST',
+    url: apiUrl + '/tides/',
+    headers: {
+      'Authorization': `Token ${user.token}`
+    },
+    data
+  })
+}
+
+export const getKey = (user) => {
+  return axios({
+    method: 'GET',
+    url: apiUrl + '/key/',
+    headers: {
+      'Authorization': `Token ${user.token}`
+    }
+  })
+}
+
+export const getCoords = (id, user) => {
+  return axios({
+    method: 'GET',
+    url: `${apiUrl}/coords/${id}/`,
+    headers: {
+      'Authorization': `Token ${user.token}`
     }
   })
 }

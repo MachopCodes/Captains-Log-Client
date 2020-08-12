@@ -1,20 +1,19 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import { signUp, signIn } from '../../api/auth'
+import { signIn } from '../../api/auth'
 import messages from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-class SignUp extends Component {
+class SignIn extends Component {
   constructor () {
     super()
 
     this.state = {
       email: '',
-      password: '',
-      passwordConfirmation: ''
+      password: ''
     }
   }
 
@@ -22,42 +21,40 @@ class SignUp extends Component {
     [event.target.name]: event.target.value
   })
 
-  onSignUp = event => {
+  onSignIn = event => {
     event.preventDefault()
 
     const { msgAlert, history, setUser } = this.props
 
-    signUp(this.state)
-      .then(() => signIn(this.state))
-      .then(res => setUser(res))
-      // .then(() => console.log('state is:', this.state))
+    signIn(this.state)
+      .then(res => setUser(res.data))
       .then(() => msgAlert({
-        heading: 'Sign Up Success',
-        message: messages.signUpSuccess,
+        heading: 'Sign In Success',
+        message: messages.signInSuccess,
         variant: 'success'
       }))
       .then(() => history.push('/'))
       .catch(error => {
-        this.setState({ email: '', password: '', passwordConfirmation: '' })
+        this.setState({ email: '', password: '' })
         console.log(error)
         msgAlert({
-          heading: 'Sign Up Failed with error: ' + error.message,
-          message: messages.signUpFailure,
+          heading: 'Sign In Failed with error: ' + error.message,
+          message: messages.signInFailure,
           variant: 'danger'
         })
       })
   }
 
   render () {
-    const { email, password, passwordConfirmation } = this.state
+    const { email, password } = this.state
 
     return (
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h3>Sign Up</h3>
-          <Form onSubmit={this.onSignUp}>
+          <h3 className="main">Sign In</h3>
+          <Form onSubmit={this.onSignIn}>
             <Form.Group controlId="email">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label className="main">Email address</Form.Label>
               <Form.Control
                 required
                 type="email"
@@ -68,24 +65,13 @@ class SignUp extends Component {
               />
             </Form.Group>
             <Form.Group controlId="password">
-              <Form.Label>Password</Form.Label>
+              <Form.Label className="main">Password</Form.Label>
               <Form.Control
                 required
+                type="password"
                 name="password"
                 value={password}
-                type="password"
                 placeholder="Password"
-                onChange={this.handleChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="passwordConfirmation">
-              <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control
-                required
-                name="passwordConfirmation"
-                value={passwordConfirmation}
-                type="password"
-                placeholder="Confirm Password"
                 onChange={this.handleChange}
               />
             </Form.Group>
@@ -102,4 +88,4 @@ class SignUp extends Component {
   }
 }
 
-export default withRouter(SignUp)
+export default withRouter(SignIn)

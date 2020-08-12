@@ -1,6 +1,8 @@
 import React from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { createTrip } from '../../api/trips'
+import { getTide, getCoords } from '../../api/tides'
+// import { createTide } from '../../api/tides'
 import messages from '../AutoDismissAlert/messages'
 
 class TripCreate extends React.Component {
@@ -8,9 +10,12 @@ class TripCreate extends React.Component {
     super(props)
 
     this.state = {
+      city: '',
+      state: '',
       launchDate: '',
       latitude: '',
-      longitude: ''
+      longitude: '',
+      tides: []
     }
   }
 
@@ -21,10 +26,19 @@ class TripCreate extends React.Component {
   onTripCreate = event => {
     event.preventDefault()
     const { msgAlert, user, history } = this.props
-    console.log('props are: ', this.props)
-    createTrip(this.state, user)
+    const id = this.state.city + this.state.state
+    getCoords(id, user)
+      .then(res => getTide(res.data.lat, res.data.lng, this.state.launchDate))
       .then(res => {
-        this.setState(res.data)
+        this.setState({ tides: res.data })
+        createTrip(this.state, user, res.data)
+        // .then(res => {
+        //   const tideCaller = []
+        //   tideCaller.push(res.data.id, this.state.tides)
+        //   createTide(tideCaller, user)
+        // })
+      })
+      .then(() => {
         msgAlert({
           heading: 'Trip Created Successfully',
           message: messages.tripCreateSucceess,
@@ -33,12 +47,13 @@ class TripCreate extends React.Component {
         history.push('/')
       })
       .catch(error => {
+        console.log(error)
         this.setState({
           launchDate: '',
           latitude: '',
-          longitude: ''
+          longitude: '',
+          tides: []
         })
-        console.log(error)
         msgAlert({
           heading: 'Trip Create Failed with error: ' + error.message,
           message: messages.tripCreateFailure,
@@ -47,15 +62,15 @@ class TripCreate extends React.Component {
       })
   }
   render () {
-    const { launchDate, latitude, longitude } = this.state
+    const { launchDate, city, state } = this.state
 
     return (
       <div className="row">
         <div className="cool-sm-10 col-md-8 mx-auto mt-5">
-          <h3>Create Trip</h3>
+          <h3 className="main">Create Trip</h3>
           <Form onSubmit={this.onTripCreate}>
             <Form.Group controlId="trip start">
-              <Form.Label>Start Date?</Form.Label>
+              <Form.Label className="main">Start Date</Form.Label>
               <Form.Control
                 required
                 type="date"
@@ -66,24 +81,24 @@ class TripCreate extends React.Component {
               />
             </Form.Group>
             <Form.Group controlId="trip end">
-              <Form.Label>Latitude</Form.Label>
+              <Form.Label className="main">City</Form.Label>
               <Form.Control
                 required
                 type="text"
-                name="latitude"
-                value={latitude}
-                placeholder="Enter trip end date"
+                name="city"
+                value={city}
+                placeholder="Enter City"
                 onChange={this.handleChange}
               />
             </Form.Group>
             <Form.Group controlId="longitude">
-              <Form.Label>longitude</Form.Label>
+              <Form.Label className="main">state</Form.Label>
               <Form.Control
                 required
                 type="text"
-                name="longitude"
-                value={longitude}
-                placeholder="Enter destination"
+                name="state"
+                value={state}
+                placeholder="Enter State (no abbreviations!)"
                 onChange={this.handleChange}
               />
             </Form.Group>

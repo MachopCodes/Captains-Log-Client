@@ -53,7 +53,7 @@ During API research and implementation,  [Tides API from RapidAPI](https://rapid
 
 **Application Screenshots**
 
-![Sign In] (https://github.com/MachopCodes/Tide_Planner/blob/master/public/CL%20Log%20In.PNG)
-![Create Trip] (https://github.com/MachopCodes/Tide_Planner/blob/master/public/CL%20Create%20Trip.PNG)
-![View Trips] (https://github.com/MachopCodes/Tide_Planner/blob/master/public/CL%20View%20Trip.PNG)
-![Show Trip] (https://github.com/MachopCodes/Tide_Planner/blob/master/public/CL%20Show%20Trip.PNG)
+![Sign In](https://github.com/MachopCodes/Tide_Planner/blob/master/public/CL%20Log%20In.PNG)
+![Create Trip](https://github.com/MachopCodes/Tide_Planner/blob/master/public/CL%20Create%20Trip.PNG)
+![View Trips](https://github.com/MachopCodes/Tide_Planner/blob/master/public/CL%20View%20Trip.PNG)
+![Show Trip](https://github.com/MachopCodes/Tide_Planner/blob/master/public/CL%20Show%20Trip.PNG)

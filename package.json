@@ -1,6 +1,6 @@
 {
-  "name": "nautical-trip-planner",
-  "homepage": "https://machopcodes.github.io/Tide_Planner/",
+  "name": "Captains-Log-Client",
+  "homepage": "https://machopcodes.github.io/Captains-Log-Client/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

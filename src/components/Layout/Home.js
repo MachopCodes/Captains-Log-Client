@@ -1,34 +1,19 @@
 import React from 'react'
+import logo from '../../wa-logo.png'
 
 const Home = () => {
-  const backgroundImageUrl = 'https://cdn.britannica.com/94/101794-050-A98A953E/Lighthouse-Portsmouth-NH.jpg'
-
-  const homeStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100vh',
-    backgroundImage: `url(${backgroundImageUrl})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    textAlign: 'center',
-    fontFamily: 'Trebuchet MS',
-    fontSize: '200px',
-    color: '#002B4E',
-    fontVariant: 'small-caps'
-  }
-
   return (
-    <div style={homeStyle}>
-      <div>
-        <h2>Plan Trips</h2>
-        <h2>With</h2>
-        <h2>Good Tides</h2>
-      </div>
-      <div>
+    <section className='page-section homeStyle parallax text-light text-center'>
+      <div className='container'>
+        <h4 className=''>Plan Trips With Good Tides</h4>
+        <div className="divider-custom divider-light">
+          <div className="divider-custom-line"></div>
+          <img className="divider-custom-icon" src={logo} alt=""></img>
+          <div className="divider-custom-line"></div>
+        </div>
         <h1>Captains Log</h1>
       </div>
-    </div>
+    </section>
   )
 }
 

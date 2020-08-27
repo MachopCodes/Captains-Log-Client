@@ -65,52 +65,56 @@ class TripCreate extends React.Component {
     const { launchDate, city, state } = this.state
 
     return (
-      <div className="row">
-        <div className="cool-sm-10 col-md-8 mx-auto mt-5">
-          <h3 className="main">Create Trip</h3>
-          <Form onSubmit={this.onTripCreate}>
-            <Form.Group controlId="trip start">
-              <Form.Label className="main">Start Date</Form.Label>
-              <Form.Control
-                required
-                type="date"
-                name="launchDate"
-                value={launchDate}
-                placeholder="Enter trip start date"
-                onChange={this.handleChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="trip end">
-              <Form.Label className="main">City</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                name="city"
-                value={city}
-                placeholder="Enter City"
-                onChange={this.handleChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="longitude">
-              <Form.Label className="main">State</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                name="state"
-                value={state}
-                placeholder="Enter State (no abbreviations!)"
-                onChange={this.handleChange}
-              />
-            </Form.Group>
-            <Button
-              variant="primary"
-              type="submit"
-            >
-              Submit
-            </Button>
-          </Form>
+      <section className='section page-section new-trip-image parallax text-light text-center'>
+        <div className="container">
+          <div className="row">
+            <div className="cool-sm-4 col-md-5 mx-auto mt-5">
+              <h3 className="main">Create Trip</h3>
+              <Form onSubmit={this.onTripCreate}>
+                <Form.Group controlId="trip start">
+                  <Form.Label className="main">Start Date</Form.Label>
+                  <Form.Control
+                    required
+                    type="date"
+                    name="launchDate"
+                    value={launchDate}
+                    placeholder="Enter trip start date"
+                    onChange={this.handleChange}
+                  />
+                </Form.Group>
+                <Form.Group controlId="trip end">
+                  <Form.Label className="main">City</Form.Label>
+                  <Form.Control
+                    required
+                    type="text"
+                    name="city"
+                    value={city}
+                    placeholder="Enter City"
+                    onChange={this.handleChange}
+                  />
+                </Form.Group>
+                <Form.Group controlId="longitude">
+                  <Form.Label className="main">State</Form.Label>
+                  <Form.Control
+                    required
+                    type="text"
+                    name="state"
+                    value={state}
+                    placeholder="Enter State (no abbreviations!)"
+                    onChange={this.handleChange}
+                  />
+                </Form.Group>
+                <Button
+                  variant="primary"
+                  type="submit"
+                >
+                  Submit
+                </Button>
+              </Form>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     )
   }
 }

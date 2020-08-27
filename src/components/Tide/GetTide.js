@@ -17,8 +17,8 @@ class GetTide extends React.Component {
   onGetTide = event => {
     event.preventDefault()
     getKey(this.props.user)
-      .then((res) => {
-        getTide(this.props.trip)
+      .then((key) => {
+        getTide(this.props.trip, key.data)
           .then((res) => this.setState({ tides: res.data.extremes }))
           .catch((error) => console.log(error))
       })

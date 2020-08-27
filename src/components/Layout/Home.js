@@ -3,7 +3,7 @@ import logo from '../../wa-logo.png'
 
 const Home = () => {
   return (
-    <section className='page-section homeStyle parallax text-light text-center'>
+    <section className='section page-section home-image parallax text-light text-center'>
       <div className='container'>
         <h4 className=''>Plan Trips With Good Tides</h4>
         <div className="divider-custom divider-light">
@@ -12,6 +12,7 @@ const Home = () => {
           <div className="divider-custom-line"></div>
         </div>
         <h1>Captains Log</h1>
+        <br></br><br></br><br></br><br></br><br></br><br></br>
       </div>
     </section>
   )

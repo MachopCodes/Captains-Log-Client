@@ -3,6 +3,7 @@ import { indexTrips } from '../../api/trips'
 import messages from '../AutoDismissAlert/messages'
 import { ListGroup, Image, Badge } from 'react-bootstrap'
 import { Link, withRouter } from 'react-router-dom'
+import GetTide from '../Tide/GetTide'
 
 class TripIndex extends React.Component {
   constructor (props) {
@@ -52,26 +53,30 @@ class TripIndex extends React.Component {
       )
     } else {
       jsx = (
-        <ListGroup>
-          {this.state.trips.map(trip => {
-            return (
-              <ListGroup.Item key={trip.id}>
-                <h3>
-                  <Badge variant="success">Launch Date:</Badge>
-                  <Badge variant="danger">{trip.launchDate.substring(5, 10)}</Badge>
-                </h3>
-                <Link to={`/trips/${trip.id}`}>
-                  <h5>{trip.city}, {trip.state}</h5>
-                </Link>
-                <h6>
-                  Coordinates:
-                  <Badge variant="secondary"> {trip.longitude} </Badge>
-                  <Badge variant="secondary"> {trip.latitude} </Badge>
-                </h6>
-              </ListGroup.Item>
-            )
-          })}
-        </ListGroup>
+        <section className='section page-section index-image parallax text-light text-center'>
+          <div className='container'>
+            <div className='row content-center'>
+              <ListGroup>
+                <div className='col'>
+                  {this.state.trips.map(trip => {
+                    return (
+                      <ListGroup.Item key={trip.id}>
+                        <Link to={`/trips/${trip.id}`}>
+                          <h5>{trip.city}, {trip.state}, {trip.launchDate.substring(5, 10)}</h5>
+                        </Link>
+                        <h6>
+                          <Badge variant="secondary"> ({trip.longitude}) </Badge>
+                          <Badge variant="secondary"> ({trip.latitude}) </Badge>
+                        </h6>
+                        <GetTide user={this.props.user} trip={trip} msgAlert={this.props.msgAlert} />
+                      </ListGroup.Item>
+                    )
+                  })}
+                </div>
+              </ListGroup>
+            </div>
+          </div>
+        </section>
       )
     }
     return (

@@ -14,18 +14,33 @@ body {
   color: white;
 }
 
-.homeStyle {
+.section {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-image: url('./lighthouse.jpg');
   background-size: cover;
   background-position: center;
 }
 
+.home-image {
+  background-image: url('./lighthouse.jpg');
+}
+
+.new-trip-image {
+  background-image: url('./new-trip.jpg');
+}
+
+.auth-image {
+  background-image: url('./sunrise.jpg');
+}
+
+.index-image {
+  background-image: url('./index-trip.jpg');
+}
+
 .page-section {
-  padding: 6rem 0;
+  padding-top: 1rem;
+  padding-bottom: 6rem;
 }
 .page-section .page-section-heading {
   font-size: 2.0rem;
@@ -118,4 +133,8 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.content-center {
+  justify-content: center;
 }

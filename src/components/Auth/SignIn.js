@@ -50,41 +50,31 @@ class SignIn extends Component {
 
     return (
       <section className='section page-section auth-image parallax text-light text-center'>
-        <div className="row">
-          <div className="col-sm-12 col-md-10 mx-auto mt-5">
-            <h3 className="main">Sign In</h3>
-            <Form onSubmit={this.onSignIn}>
-              <Form.Group controlId="email">
-                <Form.Label className="main">Email address</Form.Label>
-                <Form.Control
-                  required
-                  type="email"
-                  name="email"
-                  value={email}
-                  placeholder="Enter email"
-                  onChange={this.handleChange}
-                />
-              </Form.Group>
-              <Form.Group controlId="password">
-                <Form.Label className="main">Password</Form.Label>
-                <Form.Control
-                  required
-                  type="password"
-                  name="password"
-                  value={password}
-                  placeholder="Password"
-                  onChange={this.handleChange}
-                />
-              </Form.Group>
-              <Button
-                variant="primary"
-                type="submit"
-              >
-                Submit
-              </Button>
-            </Form>
-          </div>
-        </div>
+        <Form onSubmit={this.onSignIn}>
+          <Form.Group controlId="email">
+            <Form.Label className="main">Email address</Form.Label>
+            <Form.Control
+              required
+              type="email"
+              name="email"
+              value={email}
+              placeholder="Enter email"
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="password">
+            <Form.Label className="main">Password</Form.Label>
+            <Form.Control
+              required
+              type="password"
+              name="password"
+              value={password}
+              placeholder="Password"
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">Sign In</Button>
+        </Form>
       </section>
     )
   }

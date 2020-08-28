@@ -84,13 +84,9 @@ class TripUpdate extends Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Button
-            variant="success"
-            type="submit"
-          >
-            Update
-          </Button>
+          <Button variant="success" type="submit">Update Trip</Button>
         </Form>
+        <br></br>
         <TripDelete msgAlert={this.props.msgAlert} user={this.props.user} />
       </div>
     )

@@ -54,52 +54,42 @@ class SignUp extends Component {
 
     return (
       <section className='section page-section auth-image parallax text-light text-center'>
-        <div className="row">
-          <div className="col-sm-12 col-md-10 mx-auto mt-5">
-            <h3 className="main">Sign Up</h3>
-            <Form onSubmit={this.onSignUp}>
-              <Form.Group controlId="email">
-                <Form.Label className="main">Email address</Form.Label>
-                <Form.Control
-                  required
-                  type="email"
-                  name="email"
-                  value={email}
-                  placeholder="Enter email"
-                  onChange={this.handleChange}
-                />
-              </Form.Group>
-              <Form.Group controlId="password">
-                <Form.Label className="main">Password</Form.Label>
-                <Form.Control
-                  required
-                  name="password"
-                  value={password}
-                  type="password"
-                  placeholder="Password"
-                  onChange={this.handleChange}
-                />
-              </Form.Group>
-              <Form.Group controlId="passwordConfirmation">
-                <Form.Label className="main">Password Confirmation</Form.Label>
-                <Form.Control
-                  required
-                  name="passwordConfirmation"
-                  value={passwordConfirmation}
-                  type="password"
-                  placeholder="Confirm Password"
-                  onChange={this.handleChange}
-                />
-              </Form.Group>
-              <Button
-                variant="primary"
-                type="submit"
-              >
-                Submit
-              </Button>
-            </Form>
-          </div>
-        </div>
+        <Form onSubmit={this.onSignUp}>
+          <Form.Group controlId="email">
+            <Form.Label className="main">Email address</Form.Label>
+            <Form.Control
+              required
+              type="email"
+              name="email"
+              value={email}
+              placeholder="Enter email"
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="password">
+            <Form.Label className="main">Password</Form.Label>
+            <Form.Control
+              required
+              name="password"
+              value={password}
+              type="password"
+              placeholder="Password"
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Form.Group controlId="passwordConfirmation">
+            <Form.Label className="main">Password Confirmation</Form.Label>
+            <Form.Control
+              required
+              name="passwordConfirmation"
+              value={passwordConfirmation}
+              type="password"
+              placeholder="Confirm Password"
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Button variant="success" type="submit">Sign Up</Button>
+        </Form>
       </section>
     )
   }

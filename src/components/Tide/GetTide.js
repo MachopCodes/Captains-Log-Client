@@ -6,9 +6,7 @@ class GetTide extends React.Component {
   constructor (props) {
     super(props)
 
-    this.state = {
-      tides: null
-    }
+    this.state = { tides: null }
   }
   handleChange = event => this.setState({
     [event.target.name]: event.target.value
@@ -28,12 +26,7 @@ class GetTide extends React.Component {
     if (this.state.tides === null) {
       jsx =
       <div>
-        <Button onClick={this.onGetTide}
-          variant="info"
-          type="submit"
-        >
-        Tides
-        </Button>
+        <Button onClick={this.onGetTide} variant="info" type="submit">Show Tides</Button>
       </div>
     } else {
       jsx =
@@ -45,9 +38,7 @@ class GetTide extends React.Component {
                 variant={tide.state === 'HIGH TIDE' ? 'success' : 'danger'}>
                 {tide.state}
               </Badge>
-              <Badge variant='secondary'>
-                {tide.datetime.substring(11, 19)}
-              </Badge>
+              <Badge variant='secondary'>{tide.datetime.substring(11, 19)}</Badge>
             </ListGroup.Item>
           </ListGroup>
         ))}

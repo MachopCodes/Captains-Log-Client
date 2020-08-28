@@ -35,11 +35,7 @@ class TripDelete extends Component {
   }
 
   render () {
-    return (
-      <Button variant="danger" onClick={this.onDelete}>
-        Delete
-      </Button>
-    )
+    return (<Button variant="danger" onClick={this.onDelete}>Remove Trip</Button>)
   }
 }
 

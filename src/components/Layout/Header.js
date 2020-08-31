@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
+import { Nav, Navbar } from 'react-bootstrap'
 
 const authenticatedOptions = (
   <Fragment>
@@ -10,16 +9,12 @@ const authenticatedOptions = (
 )
 
 const alwaysOptions = (
-  <Fragment>
-    <Nav.Link href="#/">Home</Nav.Link>
-  </Fragment>
+  <Fragment><Nav.Link href="#/">Home</Nav.Link></Fragment>
 )
 
 const Header = ({ user }) => (
   <Navbar sticky="top" bg="light" variant="light" expand="md">
-    <Navbar.Brand href="#">
-      Captain&apos;s Log
-    </Navbar.Brand>
+    <Navbar.Brand href="#">Captain&apos;s Log</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">

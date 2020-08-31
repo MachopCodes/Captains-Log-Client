@@ -10,10 +10,6 @@ body {
   background-color: #2a739a
 }
 
-.main {
-  color: white;
-}
-
 .section {
   display: flex;
   justify-content: center;
@@ -140,10 +136,14 @@ body {
 }
 
 .list-group-item {
-opacity: .8;
+opacity: .7;
 border-top: 1px solid #ddd;
 border-radius: 100;
 color: #2a739a;
+}
+
+.list-group-item:hover {
+  opacity: 1;
 }
 
 .logo-img {

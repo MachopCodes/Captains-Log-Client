@@ -2,8 +2,8 @@ import React from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { createTrip } from '../../api/trips'
 import { getCoords } from '../../api/tides'
-// import { createTide } from '../../api/tides'
 import messages from '../AutoDismissAlert/messages'
+// import { createTide } from '../../api/tides'
 
 class TripCreate extends React.Component {
   constructor (props) {
@@ -69,10 +69,9 @@ class TripCreate extends React.Component {
         <div className="container">
           <div className="row">
             <div className="cool-sm-4 col-md-5 mx-auto mt-5">
-              <h3 className="main">Create Trip</h3>
               <Form onSubmit={this.onTripCreate}>
                 <Form.Group controlId="trip start">
-                  <Form.Label className="main">Start Date</Form.Label>
+                  <Form.Label className="main">Launch Date</Form.Label>
                   <Form.Control
                     required
                     type="date"
@@ -104,12 +103,7 @@ class TripCreate extends React.Component {
                     onChange={this.handleChange}
                   />
                 </Form.Group>
-                <Button
-                  variant="primary"
-                  type="submit"
-                >
-                  Submit
-                </Button>
+                <Button variant="primary" type="submit">Create Trip</Button>
               </Form>
             </div>
           </div>

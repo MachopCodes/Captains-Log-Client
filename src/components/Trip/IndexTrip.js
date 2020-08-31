@@ -48,7 +48,9 @@ class TripIndex extends React.Component {
     } else if (trips.length === 0) {
       jsx = (
         <section className='section page-section index-image parallax text-light text-center'>
-          <h1 className="main" style={{ textAlign: 'center' }} >None Yet!</h1>
+          <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+          <h1><Button variant="success" href="#create-trip">Plan a Trip!</Button></h1>
+          <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
         </section>
       )
     } else {

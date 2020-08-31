@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-
 import { changePassword } from '../../api/auth'
 import messages from '../AutoDismissAlert/messages'
-
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import { Form, Button } from 'react-bootstrap'
 
 class ChangePassword extends Component {
   constructor () {
@@ -50,7 +47,6 @@ class ChangePassword extends Component {
       <section className='section page-section auth-image parallax text-light text-center'>
         <div className="row">
           <div className="col-sm-10 col-md-8 mx-auto mt-5">
-            <h3 className="main">Change Password</h3>
             <Form onSubmit={this.onChangePassword}>
               <Form.Group controlId="oldPassword">
                 <Form.Label className="main">Old password</Form.Label>
@@ -78,7 +74,7 @@ class ChangePassword extends Component {
                 variant="primary"
                 type="submit"
               >
-                Submit
+                Change Password
               </Button>
             </Form>
           </div>

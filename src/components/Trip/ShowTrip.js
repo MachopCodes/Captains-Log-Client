@@ -31,10 +31,11 @@ class TripShow extends React.Component {
   }
 
   render () {
+    const { notFound, trip } = this.state
     let jsx
-    if (this.state.notFound) {
+    if (notFound) {
       jsx = <p>Cannot connect to server.</p>
-    } else if (this.state.trip === null) {
+    } else if (trip === null) {
       jsx = <p>Loading... </p>
     } else {
       jsx = (
@@ -42,13 +43,11 @@ class TripShow extends React.Component {
           <div>
             <Container>
               <Row>
-                <Col>
-                  <h5 className="text-center">Trip Information</h5>
-                </Col>
-              </Row>
-              <Row>
                 <Col md="auto">
-                  <TripUpdate trip={this.state.trip} user={this.props.user} msgAlert={this.props.msgAlert} />
+                  <TripUpdate
+                    trip={this.state.trip}
+                    user={this.props.user}
+                    msgAlert={this.props.msgAlert} />
                 </Col>
               </Row>
             </Container>
@@ -56,12 +55,7 @@ class TripShow extends React.Component {
         </section>
       )
     }
-    return (
-      <div>
-        <br></br>
-        {jsx}
-      </div>
-    )
+    return jsx
   }
 }
 

@@ -27,9 +27,7 @@ export const createTide = (data, user) => {
   return axios({
     method: 'POST',
     url: apiUrl + '/tides/',
-    headers: {
-      'Authorization': `Token ${user.token}`
-    },
+    headers: { 'Authorization': `Token ${user.token}` },
     data
   })
 }
@@ -38,9 +36,7 @@ export const getKey = (user) => {
   return axios({
     method: 'GET',
     url: apiUrl + '/key/',
-    headers: {
-      'Authorization': `Token ${user.token}`
-    }
+    headers: { 'Authorization': `Token ${user.token}` }
   })
 }
 
@@ -48,8 +44,6 @@ export const getCoords = (id, user) => {
   return axios({
     method: 'GET',
     url: `${apiUrl}/coords/${id}/`,
-    headers: {
-      'Authorization': `Token ${user.token}`
-    }
+    headers: { 'Authorization': `Token ${user.token}` }
   })
 }

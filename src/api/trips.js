@@ -5,9 +5,7 @@ export const createTrip = (res, state, user) => {
   return axios({
     method: 'POST',
     url: apiUrl + '/trips/',
-    headers: {
-      'Authorization': `Token ${user.token}`
-    },
+    headers: { 'Authorization': `Token ${user.token}` },
     data: {
       trip: {
         launchDate: state.launchDate,
@@ -24,9 +22,7 @@ export const indexTrips = user => {
   return axios({
     method: 'GET',
     url: apiUrl + '/trips/',
-    headers: {
-      'Authorization': `Token ${user.token}`
-    }
+    headers: { 'Authorization': `Token ${user.token}` }
   })
 }
 
@@ -34,9 +30,7 @@ export const showTrip = (id, user) => {
   return axios({
     method: 'GET',
     url: `${apiUrl}/trips/${id}/`,
-    headers: {
-      'Authorization': `Token ${user.token}`
-    }
+    headers: { 'Authorization': `Token ${user.token}` }
   })
 }
 
@@ -44,9 +38,7 @@ export const updateTrip = (state, coords, id, user) => {
   return axios({
     method: 'PATCH',
     url: `${apiUrl}/trips/${id}/`,
-    headers: {
-      'Authorization': `Token ${user.token}`
-    },
+    headers: { 'Authorization': `Token ${user.token}` },
     data: {
       trip: {
         launchDate: state.launchDate,
@@ -63,8 +55,6 @@ export const deleteTrip = (id, user) => {
   return axios({
     method: 'DELETE',
     url: `${apiUrl}/trips/${id}/`,
-    headers: {
-      'Authorization': `Token ${user.token}`
-    }
+    headers: { 'Authorization': `Token ${user.token}` }
   })
 }

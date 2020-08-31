@@ -2,7 +2,8 @@ import axios from 'axios'
 import apiUrl from '../apiConfig'
 
 export const getTide = (props, key) => {
-  const time = Math.floor((new Date(props.launchDate)).getTime() / 1000)
+  const time = Math.floor((new Date(props.launchDate)).getTime() / 1000) + 13000
+  console.log('time is ', time)
   return axios({
     method: 'GET',
     url: 'https://tides.p.rapidapi.com/tides',

@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-
 import { signIn } from '../../api/auth'
 import messages from '../AutoDismissAlert/messages'
-
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import { Form, Button } from 'react-bootstrap'
 
 class SignIn extends Component {
   constructor () {
@@ -28,12 +25,14 @@ class SignIn extends Component {
 
     signIn(this.state)
       .then(res => setUser(res.data))
-      .then(() => msgAlert({
-        heading: 'Sign In Success',
-        message: messages.signInSuccess,
-        variant: 'success'
-      }))
-      .then(() => history.push('/'))
+      .then(() => {
+        msgAlert({
+          heading: 'Sign In Success',
+          message: messages.signInSuccess,
+          variant: 'success'
+        })
+        history.push('/')
+      })
       .catch(error => {
         this.setState({ email: '', password: '' })
         console.log(error)
@@ -52,7 +51,7 @@ class SignIn extends Component {
       <section className='section page-section auth-image parallax text-light text-center'>
         <Form onSubmit={this.onSignIn}>
           <Form.Group controlId="email">
-            <Form.Label className="main">Email address</Form.Label>
+            <Form.Label className="main">Email</Form.Label>
             <Form.Control
               required
               type="email"

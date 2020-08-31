@@ -39,8 +39,8 @@ body {
 }
 
 .page-section {
-  padding-top: 1rem;
-  padding-bottom: 6rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 .page-section .page-section-heading {
   font-size: 2.0rem;
@@ -137,4 +137,16 @@ body {
 
 .content-center {
   justify-content: center;
+}
+
+.list-group-item {
+opacity: .8;
+border-top: 1px solid #ddd;
+border-radius: 100;
+color: #2a739a;
+}
+
+.logo-img {
+  width: 6%;
+  height: 6%;
 }

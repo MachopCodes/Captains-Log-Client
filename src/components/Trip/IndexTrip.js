@@ -1,7 +1,7 @@
 import React from 'react'
 import { indexTrips } from '../../api/trips'
 import messages from '../AutoDismissAlert/messages'
-import { ListGroup, Image, Badge } from 'react-bootstrap'
+import { ListGroup, Button, Badge } from 'react-bootstrap'
 import { Link, withRouter } from 'react-router-dom'
 import GetTide from '../Tide/GetTide'
 
@@ -39,17 +39,17 @@ class TripIndex extends React.Component {
   }
 
   render () {
+    const { notFound, trips } = this.state
     let jsx
-    if (this.state.notFound) {
+    if (notFound) {
       jsx = <p>Cannot connect to server.</p>
-    } else if (this.state.trips === null) {
+    } else if (trips === null) {
       jsx = <p>Loading... </p>
-    } else if (this.state.trips.length === 0) {
+    } else if (trips.length === 0) {
       jsx = (
-        <div>
+        <section className='section page-section index-image parallax text-light text-center'>
           <h1 className="main" style={{ textAlign: 'center' }} >None Yet!</h1>
-          <Image src="https://www.thoughtco.com/thmb/wM4gvZhIhhUjzWputSnBZFgnuAA=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-642334164-5b61ebb946e0fb0025dac934.jpg" />
-        </div>
+        </section>
       )
     } else {
       jsx = (
@@ -58,17 +58,18 @@ class TripIndex extends React.Component {
             <div className='row content-center'>
               <ListGroup>
                 <div className='col'>
-                  {this.state.trips.map(trip => {
+                  {trips.map(trip => {
                     return (
                       <ListGroup.Item key={trip.id}>
-                        <Link to={`/trips/${trip.id}`}>
-                          <h5>{trip.city}, {trip.state}, {trip.launchDate.substring(5, 10)}</h5>
-                        </Link>
-                        <h6>
-                          <Badge variant="secondary"> ({trip.longitude}) </Badge>
-                          <Badge variant="secondary"> ({trip.latitude}) </Badge>
-                        </h6>
+                        <h1><Badge variant="warning">{trip.launchDate.substring(5, 10)}</Badge></h1>
+                        <h2><Badge variant="dark">{trip.city}, {trip.state}</Badge></h2>
+                        <h4>
+                          <Badge variant="light">({trip.longitude})</Badge>
+                          <Badge variant="light">({trip.latitude})</Badge>
+                        </h4>
                         <GetTide user={this.props.user} trip={trip} msgAlert={this.props.msgAlert} />
+                        <br></br>
+                        <Link to={`/trips/${trip.id}`}><Button variant="success">Edit Trip</Button></Link>
                       </ListGroup.Item>
                     )
                   })}
@@ -79,12 +80,7 @@ class TripIndex extends React.Component {
         </section>
       )
     }
-    return (
-      <div>
-        <br></br>
-        {jsx}
-      </div>
-    )
+    return jsx
   }
 }
 

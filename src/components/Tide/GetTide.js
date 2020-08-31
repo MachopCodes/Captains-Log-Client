@@ -8,6 +8,7 @@ class GetTide extends React.Component {
 
     this.state = { tides: null }
   }
+
   handleChange = event => this.setState({
     [event.target.name]: event.target.value
   })
@@ -25,31 +26,33 @@ class GetTide extends React.Component {
     let jsx
     if (this.state.tides === null) {
       jsx =
-      <div>
-        <Button onClick={this.onGetTide} variant="info" type="submit">Show Tides</Button>
-      </div>
+      <div><Button onClick={this.onGetTide} variant="primary">Tides</Button></div>
     } else {
+      const getTideDate = (tide) => {
+        const date = new Date((tide.timestamp + 2750) * 1000)
+        const hours = date.getHours()
+        const minutes = date.getMinutes()
+        return (
+          <ListGroup.Item>
+            <Badge variant={tide.state === 'HIGH TIDE' ? 'success' : 'danger'}>
+              {tide.state}
+            </Badge>
+            <Badge variant='light'>
+              {hours}:{minutes < 10 ? '0' + minutes : minutes}
+            </Badge>
+          </ListGroup.Item>
+        )
+      }
       jsx =
       <div>
         {this.state.tides.map((tide) => (
           <ListGroup key={tide.timestamp}>
-            <ListGroup.Item>
-              <Badge
-                variant={tide.state === 'HIGH TIDE' ? 'success' : 'danger'}>
-                {tide.state}
-              </Badge>
-              <Badge variant='secondary'>{tide.datetime.substring(11, 19)}</Badge>
-            </ListGroup.Item>
+            <h4>{getTideDate(tide)}</h4>
           </ListGroup>
         ))}
       </div>
     }
-    return (
-      <div>
-        <h4 className="main">Tide Table</h4>
-        {jsx}
-      </div>
-    )
+    return jsx
   }
 }
 

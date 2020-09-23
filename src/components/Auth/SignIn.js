@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Fragment, Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { signIn } from '../../api/auth'
 import messages from '../AutoDismissAlert/messages'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Spinner } from 'react-bootstrap'
 
 class SignIn extends Component {
   constructor () {
@@ -10,7 +10,8 @@ class SignIn extends Component {
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      loading: false
     }
   }
 
@@ -20,12 +21,12 @@ class SignIn extends Component {
 
   onSignIn = event => {
     event.preventDefault()
-
+    this.setState({ loading: true })
     const { msgAlert, history, setUser } = this.props
-
     signIn(this.state)
       .then(res => setUser(res.data))
       .then(() => {
+        this.setState({ loading: false })
         msgAlert({
           heading: 'Sign In Success',
           message: messages.signInSuccess,
@@ -45,7 +46,7 @@ class SignIn extends Component {
   }
 
   render () {
-    const { email, password } = this.state
+    const { email, password, loading } = this.state
 
     return (
       <section className='section page-section auth-image parallax text-light text-center'>
@@ -72,7 +73,14 @@ class SignIn extends Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Button variant="primary" type="submit">Sign In</Button>
+          {loading
+            ? <Fragment>
+              <Button variant="primary" disabled>
+                <Spinner as="span" animation="border" role="status" aria-hidden="true" />
+              </Button>
+            </Fragment>
+            : <Fragment><Button variant="primary" type="submit">Sign In</Button></Fragment> }
+
         </Form>
       </section>
     )

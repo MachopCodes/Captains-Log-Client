@@ -35,7 +35,7 @@ class SignIn extends Component {
         history.push('/')
       })
       .catch(error => {
-        this.setState({ email: '', password: '' })
+        this.setState({ email: '', password: '', loading: false })
         console.log(error)
         msgAlert({
           heading: 'Sign In Failed with error: ' + error.message,
@@ -80,7 +80,6 @@ class SignIn extends Component {
               </Button>
             </Fragment>
             : <Fragment><Button variant="primary" type="submit">Sign In</Button></Fragment> }
-
         </Form>
       </section>
     )

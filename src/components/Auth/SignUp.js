@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { withRouter } from 'react-router-dom'
 import { signUp, signIn } from '../../api/auth'
 import messages from '../AutoDismissAlert/messages'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Spinner } from 'react-bootstrap'
 
 class SignUp extends Component {
   constructor () {
@@ -11,7 +11,8 @@ class SignUp extends Component {
     this.state = {
       email: '',
       password: '',
-      passwordConfirmation: ''
+      passwordConfirmation: '',
+      loading: false
     }
   }
 
@@ -21,9 +22,8 @@ class SignUp extends Component {
 
   onSignUp = event => {
     event.preventDefault()
-
+    this.setState({ loading: true })
     const { msgAlert, history, setUser } = this.props
-
     signUp(this.state)
       .then(() => signIn(this.state))
       .then(res => {
@@ -36,7 +36,7 @@ class SignUp extends Component {
         history.push('/')
       })
       .catch(error => {
-        this.setState({ email: '', password: '', passwordConfirmation: '' })
+        this.setState({ email: '', password: '', passwordConfirmation: '', loading: false })
         console.log(error)
         msgAlert({
           heading: 'Sign Up Failed with error: ' + error.message,
@@ -47,7 +47,7 @@ class SignUp extends Component {
   }
 
   render () {
-    const { email, password, passwordConfirmation } = this.state
+    const { email, password, passwordConfirmation, loading } = this.state
     return (
       <section className='section page-section auth-image parallax text-light text-center'>
         <Form onSubmit={this.onSignUp}>
@@ -84,7 +84,13 @@ class SignUp extends Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Button variant="success" type="submit">Sign Up</Button>
+          {loading
+            ? <Fragment>
+              <Button variant="primary" disabled>
+                <Spinner as="span" animation="border" role="status" aria-hidden="true" />
+              </Button>
+            </Fragment>
+            : <Fragment><Button variant="success" type="submit">Sign Up</Button></Fragment> }
         </Form>
       </section>
     )

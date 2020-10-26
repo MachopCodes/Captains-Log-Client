@@ -21,8 +21,8 @@ As a registered ser I can update or remove my planned trips
 As a registered user I would like to be able to access tidal information related to my trips
 
 **Wireframes**
-![Wireframe1](https://github.com/MachopCodes/Tide_Planner/blob/master/public/Wireframe1.PNG)
-![Wireframe1](https://github.com/MachopCodes/Tide_Planner/blob/master/public/Wireframe2.PNG)
+![Wireframe1](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/Wireframe1.PNG)
+![Wireframe1](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/Wireframe2.PNG)
 
 **Unsolved Problems & Planned Features**
 Encoding the api key into the server side
@@ -37,7 +37,7 @@ Modify the coordinate table from ALL U.S towns & cities to COASTAL global towns 
 The initial concept for Captain's Log was a log to track all parts of a sail boat to provide maintenance and repair support. As the concept developed, trip planning and access tidal information become an important differentiator and the equipment log was tabled for V1.
 
 The entitiy relationships were initially three resources, a user, a trip and details
-![ERD1](https://github.com/MachopCodes/Tide_Planner/blob/master/public/ERD1.PNG)
+![ERD1](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/ERD1.PNG)
 
 The project was divided into 6 days each with planned sprints and commits to develop grouped components.
 Day 1: Initial Plans and Client/Server Repository deployment
@@ -49,11 +49,11 @@ Day 6: Styling and CSS
 
 During API research and implementation,  [Tides API from RapidAPI](https://rapidapi.com/apihood/api/tides) was identified as the resource for tidal information. Since the  api did not need a server-side application to view so the detail resource, the detail resource was postponed for V2 development. **Tides** required 5 parameters to be given to receive tide information: Timestamp,	Interval,	Duration, Longitude & Latitude. Interval and Duration were hard-coded as 1 day & 60 minutes. Timestamp, longitude & latitude were to be sent from the trip, which did not include longitude and latitude in initial planning. To align with user stories, a resource and routing for coordinates (CoordPair) was developed, which was based on an imported table referencing all U.S towns and cities with longitudes and latitudes. This allows a user to enter a city+state pair and receive coordinates back from the server, which could be used to fetch tides. Below is the final entity relationship ERD of the final project after final planning
 
-![ERD2](https://github.com/MachopCodes/Tide_Planner/blob/master/public/ERD1.PNG)
+![ERD2](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/ERD1.PNG)
 
 **Application Screenshots**
 
-![Sign In](https://github.com/MachopCodes/Tide_Planner/blob/master/public/CL%20Log%20In.PNG)
-![Create Trip](https://github.com/MachopCodes/Tide_Planner/blob/master/public/CL%20Create%20Trip.PNG)
-![View Trips](https://github.com/MachopCodes/Tide_Planner/blob/master/public/CL%20View%20Trip.PNG)
-![Show Trip](https://github.com/MachopCodes/Tide_Planner/blob/master/public/CL%20Show%20Trip.PNG)
+![Sign In](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/CL%20Log%20In.PNG)
+![Create Trip](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/CL%20Create%20Trip.PNG)
+![View Trips](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/CL%20View%20Trip.PNG)
+![Show Trip](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/CL%20Show%20Trip.PNG)

@@ -21,8 +21,8 @@ As a registered ser I can update or remove my planned trips
 As a registered user I would like to be able to access tidal information related to my trips
 
 **Wireframes**
-![Wireframe1](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/Wireframe1.PNG)
-![Wireframe1](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/Wireframe2.PNG)
+![Wireframe1](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/readme/Wireframe1.PNG)
+![Wireframe1](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/readme/Wireframe2.PNG)
 
 **Unsolved Problems & Planned Features**
 Encoding the api key into the server side
@@ -37,7 +37,7 @@ Modify the coordinate table from ALL U.S towns & cities to COASTAL global towns 
 The initial concept for Captain's Log was a log to track all parts of a sail boat to provide maintenance and repair support. As the concept developed, trip planning and access tidal information become an important differentiator and the equipment log was tabled for V1.
 
 The entitiy relationships were initially three resources, a user, a trip and details
-![ERD1](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/ERD1.PNG)
+![ERD1](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/readme/ERD1.PNG)
 
 The project was divided into 6 days each with planned sprints and commits to develop grouped components.
 Day 1: Initial Plans and Client/Server Repository deployment
@@ -53,7 +53,7 @@ During API research and implementation,  [Tides API from RapidAPI](https://rapid
 
 **Application Screenshots**
 
-![Sign In](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/CL%20Log%20In.PNG)
-![Create Trip](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/CL%20Create%20Trip.PNG)
-![View Trips](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/CL%20View%20Trip.PNG)
-![Show Trip](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/CL%20Show%20Trip.PNG)
+![Sign In](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/readme/CL%20Log%20In.PNG)
+![Create Trip](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/readme/CL%20Create%20Trip.PNG)
+![View Trips](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/readme/CL%20View%20Trip.PNG)
+![Show Trip](https://github.com/MachopCodes/Captains-Log-Client/blob/master/public/readme/CL%20Show%20Trip.PNG)
